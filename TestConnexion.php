@@ -48,20 +48,35 @@ foreach ($jeanJackques as $personne){
 } */
 
 
-$appliDB = new Connexion;
+// ORIENTE OBJET
+
+$appliDB = new Connexion();
 
 //$appliDB->setHobby("Fire");
+//$appliDB->setMusique("Jazz");
 
 
 /*
 $hobbies = $appliDB->getHobbies();
 
 foreach ($hobbies as $hobbie)
-echo '<Input type="checkbox">'.$hobbie->Type.'</Input>';*/
+echo '<Input type="checkbox">'.$hobbie->Type.'</Input>';
 
-$appliDB->setPersonne("Maskass", "Henrique", "https:/www.google.com/maskass/","2014/07/07","Gemeaux"); 
+$appliDB->setPersonne("Maskass", "Henrique", "https:/www.google.com/maskass/","2014/07/07","Gemeaux");*/ 
+
+$hobbiesById=$appliDB->getPersonneHobby(1);
 
 
 
+foreach($hobbiesById as $hobbie){
+    echo $hobbie->Type."<br/>";
+}
+
+
+$musiqueById =$appliDB->getPersonneMusique(1);
+
+foreach($musiqueById as $musique){
+    echo $musique->Type."<br/>";
+}
 
 ?>
