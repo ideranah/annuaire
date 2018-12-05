@@ -122,7 +122,7 @@ class Connexion {
             return $hobbies;
         }
 
-        
+
          public function getPersonneMusique($personneId){
 
             $requete_prepare = $this->connexion->prepare(
@@ -137,6 +137,21 @@ class Connexion {
 
             return $musiques;
             
-        } 
+        }
+
+        public function getRelationPersonne($personneId){
+            
+            $requete_prepare =$this->connexion->prepare(
+            "SELECT Type FROM RelationPersonne
+            INNER JOIN Personne ON RelationPersonne.Relation_Id = Personne.Id
+            WHERE RelationPersonne.Personne_Id = :id");
+
+            $requete_prepare->execute(array("id"=>$personneId));
+            
+            $relation =$requete_prepare->fetchAll(PDO::FETCH_OBJ);
+
+            return $relation;
+
+        }
 }
     ?>
