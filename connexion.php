@@ -71,7 +71,7 @@ class Connexion {
             return $resultat; 
         }
         
-        public function insertPersonne($Nom, $Prenom, $URL_Photo, $Date_Naissance, $Status){
+        public function setPersonne($Nom, $Prenom, $URL_Photo, $Date_Naissance, $Status){
                         
             $requete_prepare = $this->connexion->prepare(
                 "INSERT INTO Personne (Nom,Prenom,URL_Photo,Date_Naissance,Statut_couple) values (:nom,:prenom,:url_photo,:date_naissance,:status_couple)");
@@ -83,7 +83,7 @@ class Connexion {
         
             
             
-        public function selectPersonneById(int $id){
+        public function getPersonneById(int $id){
                 
             $requete_prepare=$this->connexion->prepare(
                 "SELECT * FROM Personne WHERE Id = :id");
@@ -95,7 +95,7 @@ class Connexion {
             return $resultat;
         }
                 
-        public function selectPersonneByNom(string $pattern){
+        public function getPersonneByNom(string $pattern){
                     
             $requete_prepare=$this->connexion->prepare("SELECT * FROM Personne WHERE Nom LIKE :nom OR Prenom LIKE :prenom");
     
@@ -104,6 +104,22 @@ class Connexion {
             $resultat=$requete_prepare->fetchAll(PDO::FETCH_OBJ);
         
         return $resultat;
-    }
+        }
+
+
+        public function getPersonneHobby($personneId){
+
+            $requete_prepare = $connexion->prepare(
+                "SELECT Type FROM RelationHobby
+                INNER JOIN Hobby ON Hobby_Id = Id
+                WHERE Personne_Id = :id");
+
+            $requete_prepare->execute(
+                array("id"=>$personneId));
+
+            $hobbies = $requete_prepare->fetchAll(PDO::FETCH_OBJ);
+
+            return $hobbies;
+        }
 }
     ?>

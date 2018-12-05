@@ -50,12 +50,18 @@ foreach ($jeanJackques as $personne){
 
 $appliDB = new Connexion;
 
-$appliDB->insertHobby("Bobby");
-$hobbies = $appliDB->selectAllHobbies();
+//$appliDB->setHobby("Fire");
+
+
+/*
+$hobbies = $appliDB->getHobbies();
 
 foreach ($hobbies as $hobbie)
-echo '<Input type="checkbox">'.$hobbie->Type.'</Input>';
+echo '<Input type="checkbox">'.$hobbie->Type.'</Input>';*/
 
-$appliDB->insertPersonne("Maskass", "Henriqué", "https:/www.google.com/maskass/","2014/07/07","Gemeaux");
+$appliDB->setPersonne("Maskass", "Henrique", "https:/www.google.com/maskass/","2014/07/07","Gemeaux"); 
+
+
+
 
 ?>
