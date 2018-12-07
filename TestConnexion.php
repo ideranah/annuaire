@@ -88,4 +88,6 @@ echo "<pre>";
 print_r($relationByType);
 echo "</pre>";
 
+echo "HELLO";
+
 ?>
