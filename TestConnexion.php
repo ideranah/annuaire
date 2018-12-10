@@ -51,6 +51,12 @@ foreach ($jeanJackques as $personne){
 // ORIENTE OBJET
 
 $appliDB = new Connexion();
+/* 
+$personnes = $appliDB->getPersonnes();
+
+foreach($personnes as $personne){
+    echo $personne->Nom;
+} */
 
 //$appliDB->setHobby("Fire");
 //$appliDB->setMusique("Jazz");
@@ -64,17 +70,17 @@ echo '<Input type="checkbox">'.$hobbie->Type.'</Input>';
 
  
 $appliDB->setPersonne("Jonathan", "Dubosque", "https:/www.google.com/maskass/","2014/07/07","Sagitaire");
-$appliDB->setPersonne("Gabriel", "Dufromage", "https:/www.google.com/maskass/","2014/07/07","Raton laveur");
+$appliDB->setPersonne("Sebastien", "Morales", "https:/www.google.com/maskass/","2014/07/07","Cock au vin");*/
 
-$hobbiesById=$appliDB->getPersonneHobby(1);*/
+$hobbiesById=$appliDB->getPersonneHobby(1);
 
 
 
-/* foreach($hobbiesById as $hobbie){
+ foreach($hobbiesById as $hobbie){
     echo $hobbie->Type."<br/>";
 }
 
-
+/*
 $musiqueById =$appliDB->getPersonneMusique(1);
 
 foreach($musiqueById as $musique){
@@ -83,11 +89,9 @@ foreach($musiqueById as $musique){
 
 
 
-$relationByType = $appliDB->getRelationPersonne(1);
+/* $relationByType = $appliDB->getRelationPersonne(1);
 echo "<pre>";
 print_r($relationByType);
-echo "</pre>";
-
-echo "HELLO";
+echo "</pre>"; */
 
 ?>

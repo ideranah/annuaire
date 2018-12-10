@@ -13,7 +13,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
-        <a class="navbar-brand" href="annuaire.html">
+        <a class="navbar-brand" href="annuaire.php">
             <img src="https://www.freeiconspng.com/uploads/am-a-19-year-old-multimedia-artist-student-from-manila--21.png"
                 alt="" height="30" width="30">
             ReannuairE
@@ -28,7 +28,7 @@
                     <a class="nav-link" href="#">Inscription</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="annuaire.html">Annuaire</a>
+                    <a class="nav-link" href="annuaire.php">Annuaire</a>
             </ul>
         </div>
     </nav>

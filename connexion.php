@@ -80,8 +80,18 @@ class Connexion {
                 array('nom' => "$Nom",'prenom' => "$Prenom",'url_photo' => "$URL_Photo",'date_naissance' => "$Date_Naissance",'status_couple' => "$Status"));
         }
         
-        
-            
+
+        public function getPersonnes(){
+                
+            $requete_prepare=$this->connexion->prepare("SELECT * FROM Personne");
+                    
+            $requete_prepare->execute();
+                    
+            $resultat=$requete_prepare->fetchALl(PDO::FETCH_OBJ);
+                    
+            return $resultat;
+        }
+
             
         public function getPersonneById(int $id){
                 
@@ -94,6 +104,7 @@ class Connexion {
                     
             return $resultat;
         }
+
                 
         public function getPersonneByNom(string $pattern){
                     
