@@ -1,3 +1,9 @@
+<?php
+    require ('connexion.php');
+    $appliDB = new Connexion();
+    $personnes = $appliDB->getPersonnes();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -38,10 +44,10 @@
             <h1 class="row justify-content-center">INSCRIPTION</h1>
             <div class="row justify-content-center mb-3">
                 <div class="col-4">
-                    <input type="text" class="form-control" placeholder="Nom">
+                    <input type="text" class="form-control" placeholder="Nom" name="nom">
                 </div>
                 <div class="col-4">
-                <input type="text" class="form-control" placeholder="Prénom      ">
+                    <input type="text" class="form-control" placeholder="Prénom" name="prenom">
             </div>
         </div>
         <div class="row justify-content-center mb-3">
@@ -49,7 +55,7 @@
                 <label for="date">Date de naissance : </label>
             </div>
             <div class="col-4">
-                <input class="form-control" type="date" id="date">
+                <input class="form-control" type="date" id="date" name="date">
             </div>
         </div>
         <div class="row justify-content-center mb-3">
@@ -67,12 +73,9 @@
                     <label>Hobies : </label>
                 </div>
                 <div class="col-3">
-                    <label class=""><input class="mr-1" type="checkbox">Football</label>
-                    <label class=""><input class="mr-1" type="checkbox">Bootball</label>
-                    <label class=""><input class="mr-1" type="checkbox">Tootball</label>
-                    <label class=""><input class="mr-1" type="checkbox">Mootball</label>
-                    <label class=""><input class="mr-1" type="checkbox">Pootball</label>
-                    <label class=""><input class="mr-1" type="checkbox">Rootball</label>
+                    <label class=""><input class="mr-1" type="checkbox" name="Earth">Earth</label>
+                    <label class=""><input class="mr-1" type="checkbox" name="Wind">Wind</label>
+                    <label class=""><input class="mr-1" type="checkbox" name="Fire">Fire</label>
                 </div>
             </div>
         <div class="row justify-content-center mb-3">
@@ -97,7 +100,7 @@
         <div class="container-medium border shadow-lg p-3 mb-5 bg-white rounded float-right">
                 <ul class="list-group">
                         <li class="list-group-item profil-title">
-                            <a class="" href="profile.html">
+                            <a class="" href="profile.php">
                                 LISTE DES RELATIONS
                             </a>
                             <form class="form-inline my-3 my-lg-0">
@@ -105,54 +108,24 @@
                                     <button class="btn btn-outline-success my-3 my-sm-3 float-right" type="submit">Search</button>
                             </form>
                         </li>
-                        <li class="list-group-item">
-                            <a class="link-profil" href="profile.html">
-                                <img src="https://avatarfiles.alphacoders.com/547/54795.jpg" width="50" height="50" alt="">
-                                Valerie Lemercier
+
+                        <?php
+
+                        foreach($personnes as $personne){
+                            echo '<li class="list-group-item">
+                            <a class="link-profil" href="profile.php?id='. $personne->Id .'">
+                            <img src="https://avatarfiles.alphacoders.com/547/54795.jpg" width="50" height="50" alt="">
+                            '.$personne->Nom.' '.$personne->Prenom.'
                             </a>
                             <select name="relation" class="float-right ml-5">
-                                    <option value="">Aucune relation</option>
-                                    <option value="ami">Ami</option>
-                                    <option value="famille">Famille</option>
-                                    <option value="collegue">Collegue</option>
+                            <option value="">Aucune relation</option>
+                            <option value="ami">Ami</option>
+                            <option value="famille">Famille</option>
+                            <option value="collegue">Collegue</option>
                             </select>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="profile.html">
-                                <img src="http://s3.amazonaws.com/cdn.roosterteeth.com/uploads/images/9cb43cf1-68de-4c64-af3a-151ffce45b27/original/1353379-1439487753997-Bender-Avatar.png" width="50" height="50" alt="">
-                                Aalerie Lemercier
-                            </a>
-                            <select name="relation" class="float-right">
-                                <option value="">Aucune relation</option>
-                                <option value="ami">Ami</option>
-                                <option value="famille">Famille</option>
-                                <option value="collegue">Collegue</option>
-                            </select>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="profile.html">
-                                <img src="https://pbs.twimg.com/profile_images/817411634113040385/x3omzI6x_400x400.jpg" width="50" height="50" alt="">
-                                Balerie Lemercier
-                            </a>
-                            <select name="relation" class="float-right">
-                                    <option value="">Aucune relation</option>
-                                    <option value="ami">Ami</option>
-                                    <option value="famille">Famille</option>
-                                    <option value="collegue">Collegue</option>
-                            </select>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="profile.html">
-                                <img src="https://pbs.twimg.com/profile_images/1151117177/parallel_pic.png" width="50" height="50" alt="">
-                                Calerie Lemercier
-                            </a>
-                            <select name="relation" class="float-right"> 
-                                    <option value="">Aucune relation</option>
-                                    <option value="ami">Ami</option>
-                                    <option value="famille">Famille</option>
-                                    <option value="collegue">Collegue</option>
-                            </select>
-                        </li>
+                            </li>';
+                        }
+                        ?>
                     </ul>
             </div>
     </form>

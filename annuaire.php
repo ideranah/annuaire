@@ -1,5 +1,8 @@
 <?php
 require ('connexion.php');
+$appliDB = new Connexion();
+$personnes = $appliDB->getPersonnes();
+
 ?>
 
 <!DOCTYPE html>
@@ -49,10 +52,6 @@ require ('connexion.php');
             </form>
         </li>
         <?php
-
-            $appliDB = new Connexion();
-            $personnes = $appliDB->getPersonnes();
-
             foreach($personnes as $personne){
                echo '<li class="list-group-item">
                 <a class="link-profil" href="profile.php?id='. $personne->Id .'">

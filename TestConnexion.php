@@ -3,7 +3,7 @@ require ('connexion.php');
 /* $conn=connexionBD();
 
 
-
+    
 if($conn != NULL){
     echo "Connexion BD reussie <br/>";
 }else{
@@ -51,6 +51,16 @@ foreach ($jeanJackques as $personne){
 // ORIENTE OBJET
 
 $appliDB = new Connexion();
+
+//echo $appliDB->setPersonneHobby(2,3);    setPersonne($Nom, $Prenom, $URL_Photo, $Date_Naissance, $Status)
+//$lasid =  $appliDB->setPersonne("big boy","Julien","https://www.google.com/","1983/10/12","Babaorhum");
+
+//var_dump($appliDB->getLastId());
+
+
+
+echo $appliDB->getLastId()->Id;
+
 /* 
 $personnes = $appliDB->getPersonnes();
 
@@ -70,15 +80,15 @@ echo '<Input type="checkbox">'.$hobbie->Type.'</Input>';
 
  
 $appliDB->setPersonne("Jonathan", "Dubosque", "https:/www.google.com/maskass/","2014/07/07","Sagitaire");
-$appliDB->setPersonne("Sebastien", "Morales", "https:/www.google.com/maskass/","2014/07/07","Cock au vin");*/
+$appliDB->setPersonne("Jorge", "SanJose-Delaroya-Pinto", "https:/www.google.com/maskass/","2014/07/07","Canard laqué");*/
 
-$hobbiesById=$appliDB->getPersonneHobby(1);
+/* $hobbiesById=$appliDB->getPersonneHobby(1);
 
 
 
  foreach($hobbiesById as $hobbie){
     echo $hobbie->Type."<br/>";
-}
+} */
 
 /*
 $musiqueById =$appliDB->getPersonneMusique(1);

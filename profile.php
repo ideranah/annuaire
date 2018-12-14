@@ -1,10 +1,11 @@
 
 <?php
-require ('connexion.php');
-$appliDB = new Connexion();
-$personne=$appliDB->getPersonneById($_GET["id"]);
-$hobbiesById=$appliDB->getPersonneHobby($_GET["id"]);
-$relationsById=$appliDB->getRelationPersonne($_GET["id"]);
+    require ('connexion.php');
+    $appliDB = new Connexion();
+    $personne=$appliDB->getPersonneById($_GET["id"]);
+    $hobbiesById=$appliDB->getPersonneHobby($_GET["id"]);
+    $relationsById=$appliDB->getRelationPersonne($_GET["id"]);
+    $musiqueById=$appliDB->getPersonneMusique($_GET["id"]);
 
 ?>
 <!DOCTYPE html>
@@ -35,7 +36,7 @@ $relationsById=$appliDB->getRelationPersonne($_GET["id"]);
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Inscription</a>
+                    <a class="nav-link" href="inscription.php">Inscription</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="annuaire.php">Annuaire</a>
@@ -59,9 +60,12 @@ $relationsById=$appliDB->getRelationPersonne($_GET["id"]);
 
             <div class="container-medium border shadow-lg p-3 mb-5 mt-5 bg-white rounded">
                 <h4 class="genremusical row justify-content-center">Genre de musique</h4>
-                <div class="genre">Rock</div>
-                <div class="genre">Pop</div>
-                <div class="genre">House</div>
+                <?php
+                    foreach($musiqueById as $musique){
+
+                        echo '<div class="genre">'.$musique->Type.'</div>';
+                    }
+                ?>
             </div>
 
             <div class="container-medium border shadow-lg p-3 mb-5 mt-5 bg-white rounded">
@@ -88,9 +92,9 @@ $relationsById=$appliDB->getRelationPersonne($_GET["id"]);
                 foreach($relationsById as $relation){
 
                 echo '<li class="list-group-item">
-                     <a class="link-profil" href="profile.html">
+                     <a class="link-profil" href="profile.php?id='.$relation->Id.'">
                      <img src="https://avatarfiles.alphacoders.com/547/54795.jpg" width="50" height="50" alt="">
-                     '.$appliDB->getPersonneById($relation->Relation_Id)->Nom.'
+                     '.$relation->Nom.' '.$relation->Prenom.'
                      </a>
                      </li>';
                 }

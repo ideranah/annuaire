@@ -44,6 +44,12 @@ class Connexion {
             return $resultat;   
         }
 
+        public function setPersonneHobby($personneId, $hobbyId){
+            $requete_prepare =$this->connexion->prepare("INSERT INTO RelationHobby (Personne_Id,Hobby_Id) values(:personneId,:hobbyId)");
+            return $requete_prepare->execute(array('personneId'=>$personneId,'hobbyId'=>$hobbyId));
+
+        }
+
         public function setMusique(string $style){
                 
             try{
@@ -78,6 +84,18 @@ class Connexion {
                 
             $requete_prepare->execute(
                 array('nom' => "$Nom",'prenom' => "$Prenom",'url_photo' => "$URL_Photo",'date_naissance' => "$Date_Naissance",'status_couple' => "$Status"));
+    
+            }
+
+        public function getLastId(){
+            
+            $requete_prepare=$this->connexion->prepare("SELECT max(Id) Id FROM Personne");
+
+            $requete_prepare->execute();
+            $resultat=$requete_prepare->fetch(PDO::FETCH_OBJ);
+
+            return $resultat;
+            
         }
         
 
@@ -87,7 +105,7 @@ class Connexion {
                     
             $requete_prepare->execute();
                     
-            $resultat=$requete_prepare->fetchALl(PDO::FETCH_OBJ);
+            $resultat=$requete_prepare->fetchAll(PDO::FETCH_OBJ);
                     
             return $resultat;
         }
@@ -153,7 +171,7 @@ class Connexion {
         public function getRelationPersonne($personneId){
             
             $requete_prepare =$this->connexion->prepare(
-            "SELECT Type FROM RelationPersonne
+            "SELECT * FROM RelationPersonne
             INNER JOIN Personne ON RelationPersonne.Relation_Id = Personne.Id
             WHERE RelationPersonne.Personne_Id = :id");
 
@@ -164,5 +182,7 @@ class Connexion {
             return $relation;
 
         }
+
+        
 }
     ?>
