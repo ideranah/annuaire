@@ -35,7 +35,7 @@ class Connexion {
             
         public function getHobbies(){
         
-            $requete_prepare =$this->connexion->prepare("SELECT Type FROM Hobby");
+            $requete_prepare =$this->connexion->prepare("SELECT * FROM Hobby");
         
             $requete_prepare->execute();
             
@@ -65,10 +65,15 @@ class Connexion {
 
             return true;
         }
+
+        public function setPersonneMusique($personneId,$musiquesId){
+            $requete_prepare = $this->connexion->prepare("INSERT INTO RelationMusique (Personne_Id,Musique_Id) values(:personneId,:musiqueId)");
+            return $requete_prepare->execute(array('personneId'=>$personneId,'musiqueId'=>$musiquesId));
+        }
                     
         public function getMusiques(){
             
-            $requete_prepare = $this->connexion->prepare("SELECT Type FROM Musique");
+            $requete_prepare = $this->connexion->prepare("SELECT * FROM Musique");
                 
             $requete_prepare->execute();
                 
@@ -88,13 +93,8 @@ class Connexion {
             }
 
         public function getLastId(){
-            
-            $requete_prepare=$this->connexion->prepare("SELECT max(Id) Id FROM Personne");
 
-            $requete_prepare->execute();
-            $resultat=$requete_prepare->fetch(PDO::FETCH_OBJ);
-
-            return $resultat;
+            return $this->connexion->lastInsertId();
             
         }
         
@@ -180,6 +180,10 @@ class Connexion {
             $relation =$requete_prepare->fetchAll(PDO::FETCH_OBJ);
 
             return $relation;
+
+        }
+
+        public function setRelationPersonne($personneId,$relationId,$relationType){
 
         }
 

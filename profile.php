@@ -6,7 +6,6 @@
     $hobbiesById=$appliDB->getPersonneHobby($_GET["id"]);
     $relationsById=$appliDB->getRelationPersonne($_GET["id"]);
     $musiqueById=$appliDB->getPersonneMusique($_GET["id"]);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
