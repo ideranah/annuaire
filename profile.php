@@ -46,8 +46,7 @@
     <div class="container ">
         <div class="container-medium border shadow-lg p-3 mb-5 bg-white rounded">
             <div class="row justify-content-center">
-                <img class="rounded-circle" src="https://pbs.twimg.com/profile_images/817411634113040385/x3omzI6x_400x400.jpg"
-                    alt="">
+                <img class="rounded-circle" src="<?php echo $personne->URL_Photo?>" width=300px; height=300px alt="">
             </div>
             <div class="container border shadow-lg p-3 bg-white rounded float-righ mt-5">
                 <h4 class="genremusical row justify-content-center">Donnes personnelles</h4>
@@ -92,7 +91,7 @@
 
                 echo '<li class="list-group-item">
                      <a class="link-profil" href="profile.php?id='.$relation->Id.'">
-                     <img src="https://avatarfiles.alphacoders.com/547/54795.jpg" width="50" height="50" alt="">
+                     <img src="'.$relation->URL_Photo.'" width="50" height="50" alt="">
                      '.$relation->Nom.' '.$relation->Prenom.'
                      </a>
                      </li>';

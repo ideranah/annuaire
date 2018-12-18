@@ -183,8 +183,9 @@ class Connexion {
 
         }
 
-        public function setRelationPersonne($personneId,$relationId,$relationType){
-
+        public function setPersonneRelation($personId,$relationId,$relationType){
+            $requete_prepare = $this->connexion->prepare("INSERT INTO RelationPersonne (Personne_Id,Relation_Id,Relation_Type) values (:personne_id,:relation_id,:relation_type)");
+            $requete_prepare->execute(array("personne_id"=>$personId,"relation_id"=>$relationId,"relation_type"=>$relationType));
         }
 
         

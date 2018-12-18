@@ -78,11 +78,11 @@
                 <div class="col-3 text-right">
                     <label>Hobies : </label>
                 </div>
-                <div class="col-3">
+                <div class="float-left">
                     <?php
                     foreach($hobbys as $hobby){
 
-                        echo '<label class=""><input class="mr-1" type="checkbox" name="hobby[]" value="'.$hobby->Id.'">'.$hobby->Type.'</label>';
+                        echo '<label class=""><input class="mr-3 ml-3" type="checkbox" name="hobby[]" value="'.$hobby->Id.'">'.$hobby->Type.'</label>';
                     }
                     ?>
                 </div>
@@ -91,12 +91,12 @@
                 <div class="col-3 text-right">
                     <label>Music : </label>
                 </div>
-                <div class="col-3">
+                <div class="">
 
                     <?php
                         foreach($musiques as $musique){
 
-                            echo '<label class=""><input class="mr-1" type="checkbox" name="musique[]" value="'.$musique->Id.'">'.$musique->Type.'</label>';
+                            echo '<label class=""><input class="mr-3 ml-3" type="checkbox" name="musique[]" value="'.$musique->Id.'">'.$musique->Type.'</label>';
                         }
                     ?>
                
@@ -109,26 +109,25 @@
             </div>
         </div>
         <div class="container-medium border shadow-lg p-3 mb-5 bg-white rounded float-right">
-                <ul class="list-group">
                         <li class="list-group-item profil-title">
                             <a class="" href="profile.php">
                                 LISTE DES RELATIONS
                             </a>
-                            <form class="form-inline my-3 my-lg-0">
-                                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                                    <button class="btn btn-outline-success my-3 my-sm-3 float-right" type="submit">Search</button>
-                            </form>
+                
+                                    <input class="form-control mr-sm-2" id="search" onkeyup="myFunction()" type="search" placeholder="Search" aria-label="Search">
+                
                         </li>
 
+                    <ul class="list-group test" id="ulListAmis">
                         <?php
 
                         foreach($personnes as $personne){
                             echo '<li class="list-group-item">
                             <a class="link-profil" href="profile.php?id='. $personne->Id .'">
-                            <img src="https://avatarfiles.alphacoders.com/547/54795.jpg" width="50" height="50" alt="">
+                            <img src="'.$personne->URL_Photo.'" width="50" height="50" alt="">
                             '.$personne->Nom.' '.$personne->Prenom.'
                             </a>
-                            <select name="relation" class="float-right ml-5">
+                            <select name="relation['.$personne->Id.']" class="float-right ml-5">
                             <option value="">Aucune relation</option>
                             <option value="ami">Ami</option>
                             <option value="famille">Famille</option>
@@ -148,6 +147,25 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+
+        <script>
+    function myFunction() {
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById("search");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("ulListAmis");
+        li = ul.getElementsByTagName("li");
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+}
+</script>
 </body>
 
 </html>
