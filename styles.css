@@ -18,8 +18,10 @@ a:hover{
 }
 
 body{
-    background-image: url("https://www.thoughtco.com/thmb/rK99oOSfZf8O4r5ho479kSxpA5c=/2330x2210/filters:no_upscale():max_bytes(150000):strip_icc()/futLeelaNFry-57a96d0b3df78cf459bd821e.jpg");
+    background-image: url("https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fimages8.alphacoders.com%2F467%2F467431.jpg&f=1");
     background-repeat: no-repeat;
+    background-size: cover ;
+    background-position-y: center ; 
     background-attachment: fixed;
 }
 
@@ -39,7 +41,15 @@ body{
     overflow-y: auto;
 }
 
+#relation_type{
+    float:right;
 
+}
+
+.bg-img{
+    background-image: url("https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fimages8.alphacoders.com%2F467%2F467431.jpg&f=1");
+    background-repeat: no-repeat;
+} 
 
 
 

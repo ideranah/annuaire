@@ -22,7 +22,7 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3 fixed-top">
         <a class="navbar-brand" href="annuaire.php">
             <img src="https://www.freeiconspng.com/uploads/am-a-19-year-old-multimedia-artist-student-from-manila--21.png"
                 alt="" height="30" width="30">
@@ -43,8 +43,8 @@
         </div>
     </nav>
 
-    <div class="container ">
-        <div class="container-medium border shadow-lg p-3 mb-5 bg-white rounded">
+    <div class="container mt-3">
+        <div class="container-medium border shadow-lg p-3 mb-5 bg-transparent rounded bg-img">
             <div class="row justify-content-center">
                 <img class="rounded-circle" src="<?php echo $personne->URL_Photo?>" width=300px; height=300px alt="">
             </div>
@@ -92,7 +92,7 @@
                 echo '<li class="list-group-item">
                      <a class="link-profil" href="profile.php?id='.$relation->Id.'">
                      <img src="'.$relation->URL_Photo.'" width="50" height="50" alt="">
-                     '.$relation->Nom.' '.$relation->Prenom.'
+                     '.$relation->Nom.' '.$relation->Prenom.' <span class="mt-2" id="relation_type">'.$relation->Relation_Type.'</span>
                      </a>
                      </li>';
                 }

@@ -1,8 +1,9 @@
 <?php
  require_once ('connexion.php');
  
+ /* Permet de s'inscrire dans l'application */
+
  var_dump($_POST);
- 
  function inscription(){
      $appliDB = new Connexion();
      $musiquesId=$_POST['musique'];
@@ -30,7 +31,7 @@
     header("location:profile.php?id=".$personne_id);
  }
  
-inscription();
+//inscription();
 
 
 ?>
