@@ -114,7 +114,7 @@
                                 LISTE DES RELATIONS
                             </a>
                 
-                                    <input class="form-control mr-sm-2" id="search" onkeyup="myFunction()" type="search" placeholder="Search" aria-label="Search">
+                                    <input class="form-control mr-sm-2" id="search" onkeyup="search()" type="search" placeholder="Search" aria-label="Search">
                 
                         </li>
 
@@ -149,7 +149,7 @@
         crossorigin="anonymous"></script>
 
         <script>
-    function myFunction() {
+    function search() {
         var input, filter, ul, li, a, i, txtValue;
         input = document.getElementById("search");
         filter = input.value.toUpperCase();
