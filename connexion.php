@@ -35,7 +35,7 @@ class Connexion {
             
         public function getHobbies(){
         
-            $requete_prepare =$this->connexion->prepare("SELECT * FROM Hobby");
+            $requete_prepare =$this->connexion->prepare("SELECT * FROM Contrat");
         
             $requete_prepare->execute();
             
